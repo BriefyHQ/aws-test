@@ -1,0 +1,20 @@
+language: python
+python:
+  - 3.5
+
+services:
+  - docker
+
+env:
+  - AWS_ACCESS_KEY_ID='foo' AWS_DEFAULT_REGION='us-east-1' AWS_SECRET_ACCESS_KEY='bar'
+
+install:
+  - docker build -t aws-test .
+  - docker run -d -p 127.0.0.1:5000:5000 --name mock aws-test sqs
+
+before_script:
+  - pip install -r tests/requirements.txt
+
+script:
+  - docker ps | grep -q mock
+  - py.test tests/
