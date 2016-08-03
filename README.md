@@ -13,3 +13,7 @@ Example running SQS on port 5000:
 This image can be found on:
 
 	https://hub.docker.com/r/briefy/aws-test/
+
+Repository available at:
+
+	https://github.com/BriefyHQ/aws-test
